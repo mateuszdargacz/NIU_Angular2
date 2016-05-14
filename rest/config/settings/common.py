@@ -11,10 +11,11 @@ https://docs.djangoproject.com/en/dev/ref/settings/
 from __future__ import absolute_import, unicode_literals
 
 import environ
+import sys
 
 ROOT_DIR = environ.Path(__file__) - 3  # (backend/config/settings/common.py - 3 = backend/)
 APPS_DIR = ROOT_DIR.path('backend')
-
+sys.path.insert(0, str(APPS_DIR))
 env = environ.Env()
 
 # APP CONFIGURATION
@@ -28,21 +29,26 @@ DJANGO_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    # Useful template tags:
-    # 'django.contrib.humanize',
+        # Useful template tags:
+        # 'django.contrib.humanize',
 
-    # Admin
+        # Admin
     'django.contrib.admin',
 )
 THIRD_PARTY_APPS = (
+    'rest_framework',
+    'rest_auth',
     'allauth',  # registration
+    'rest_auth.registration',
     'allauth.account',  # registration
     'allauth.socialaccount',  # registration
+    'corsheaders'
 )
 
 # Apps specific for this project go here.
 LOCAL_APPS = (
     'backend.users',  # custom users app
+    'imagesascii',  # images app
     # Your stuff: custom apps go here
 )
 
@@ -54,8 +60,11 @@ INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 MIDDLEWARE_CLASSES = (
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -101,7 +110,6 @@ DATABASES = {
     'default': env.db('DATABASE_URL', default='postgres:///backend'),
 }
 DATABASES['default']['ATOMIC_REQUESTS'] = True
-
 
 # GENERAL CONFIGURATION
 # ------------------------------------------------------------------------------
@@ -223,7 +231,6 @@ LOGIN_URL = 'account_login'
 
 # SLUGLIFIER
 AUTOSLUG_SLUGIFY_FUNCTION = 'slugify.slugify'
-
 
 # Location of root django.contrib.admin URL, use {% url 'admin:index' %}
 ADMIN_URL = r'^admin/'
