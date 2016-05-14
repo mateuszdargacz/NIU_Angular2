@@ -40,7 +40,7 @@ Once you have those, you should install these globals with `npm install --global
 
 * `virtualenv env --no-site-packages`
 * `env/bin/activate`
-* `pip install requrements.txt`
+* `pip install -r requrements/base.txt`
 
 ## Setup
 
