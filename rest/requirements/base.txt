@@ -48,3 +48,4 @@ redis>=2.10.0
 djangorestframework
 django-rest-auth
 django-cors-headers
+pyfiglet==0.7.5

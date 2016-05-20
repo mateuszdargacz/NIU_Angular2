@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 import { AppState } from '../app.service';
+import { NgLogin } from '../utility/components/login.component';
 import { Title } from './title';
 import { XLarge } from './x-large';
 
@@ -16,7 +17,8 @@ import { XLarge } from './x-large';
   // We need to tell Angular's compiler which directives are in our template.
   // Doing so will allow Angular to attach our behavior to an element
   directives: [
-    XLarge
+    XLarge,
+    NgLogin
   ],
   // We need to tell Angular's compiler which custom pipes are in our template.
   pipes: [ ],
