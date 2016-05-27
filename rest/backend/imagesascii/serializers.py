@@ -17,7 +17,7 @@ class AsciiImageSerializer(serializers.ModelSerializer):
 
 class GallerySerializer(serializers.ModelSerializer):
     user = serializers.HiddenField(default=serializers.CurrentUserDefault())
-    images = AsciiImageSerializer(many=True)
+    images = AsciiImageSerializer(many=True, read_only=True)
 
     class Meta:
         model = Gallery

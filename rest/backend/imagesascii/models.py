@@ -32,7 +32,7 @@ class AsciiImage(models.Model):
     name_or_image = models.CharField(max_length=2, choices=CHOICES)
     original_image = models.ImageField(upload_to='images/', null=True, blank=True)
     font = models.CharField(max_length=128, null=True, blank=True, choices=FONT_CHOICES)
-    gallery = models.ForeignKey(Gallery)
+    gallery = models.ForeignKey(Gallery, related_name='images')
 
     @property
     def ascii_art(self):
