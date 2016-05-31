@@ -1,0 +1,18 @@
+
+<form>
+    <h2>Create Gallery</h2>
+    <p>
+        {{ errors.non_field_errors }}
+    </p>
+    <p *ngIf="errors.name" class="error">
+      <span>{{ errors.name }}</span>
+    </p>
+    <input [(ngModel)]="name" placeholder="name">
+    <br>
+    <p *ngIf="errors.desc" class="error">
+      <span>{{ errors.desc }}</span>
+    </p>
+    <input [(ngModel)]="desc" placeholder="description">
+    <br>
+    <button (click)="create()">Create</button>
+</form>

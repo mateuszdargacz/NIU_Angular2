@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import {UserService} from "../services/auth.service";
+import {AuthService} from "../services/auth.service";
 import { ROUTER_DIRECTIVES, Routes, Router } from '@angular/router';
 
 @Component({
@@ -13,21 +13,21 @@ export class NgLogin {
   password: string = '';
   errors: [any] = [];
   isLoggedIn: boolean = false;
-  constructor(public userService: UserService, private router: Router) {
-    this.isLoggedIn = this.userService.isLoggedIn();
+  constructor(public authService: AuthService, private router: Router) {
+    this.isLoggedIn = this.authService.isLoggedIn();
   }
 
   ngOnInit() {
-    this.isLoggedIn = this.userService.isLoggedIn();
+    this.isLoggedIn = this.authService.isLoggedIn();
   }
 
   login(): any {
     var that = this;
-    this.userService.login(this.username, this.password)
+    this.authService.login(this.username, this.password)
       .subscribe(
         data => {
           if (data.key) {
-            that.userService.setToken(data.key);
+            that.authService.setToken(data.key);
             that.isLoggedIn = true;
             that.errors = [];
             that.router.navigate(['/mosaic']);
@@ -40,6 +40,6 @@ export class NgLogin {
       );
   }
   token(): string{
-    return this.userService.token();
+    return this.authService.token();
   }
 }

@@ -15,8 +15,7 @@ var App = (function () {
         this.appState = appState;
         this.angularclassLogo = 'assets/img/angularclass-avatar.png';
         this.loading = false;
-        this.name = 'Angular 2 Webpack Starter';
-        this.url = 'https://twitter.com/AngularClass';
+        this.name = 'Ascii Art Generator';
     }
     App.prototype.ngOnInit = function () {
         console.log('Initial App State', this.appState.state);
@@ -29,26 +28,19 @@ var App = (function () {
             directives: [router_active_1.RouterActive],
             encapsulation: core_1.ViewEncapsulation.None,
             styles: [
-                require('./app.css')
+                require('./app.css'),
+                require('../../node_modules/bootstrap/dist/css/bootstrap.min.css')
             ],
-            template: "<pre class=\"app-state\">this.appState.state = {{ appState.state | json }}</pre>\n  "
+            templateUrl: 'app/app.component.html',
         }),
         router_deprecated_1.RouteConfig([
             { path: '/', name: 'Index', component: home_1.Home, useAsDefault: true },
             { path: '/home', name: 'Home', component: home_1.Home },
-            // Async load a component using Webpack's require with es6-promise-loader and webpack `require`
             { path: '/about', name: 'About', loader: function () { return require('es6-promise!./about')('About'); } }
-        ]),
+        ]), 
         __metadata('design:paramtypes', [app_service_1.AppState])
     ], App);
     return App;
 })();
 exports.App = App;
-/*
- * Please review the https://github.com/AngularClass/angular2-examples/ repo for
- * more angular app examples that you may copy/paste
- * (The examples may not be updated as quickly. Please open an issue on github for us to update it)
- * For help or questions please contact us at @AngularClass on twitter
- * or our chat on Slack at https://AngularClass.com/slack-join
- */
 //# sourceMappingURL=app.component.js.map

@@ -41,11 +41,12 @@ export class AuthService {
         { headers }
       )
       .map(res => res.json())
+
   }
 
   setToken(token:string): void {
     localStorage.setItem('auth_token', token);
-    this._observer.next(true);
+    // this._observer.next(true);
     this.loggedIn = true;
   }
 
@@ -55,7 +56,7 @@ export class AuthService {
 
   logout(): void {
     localStorage.removeItem('auth_token');
-    this._observer.next(false);
+    // this._observer.next(false);
     this.loggedIn = false;
   }
 

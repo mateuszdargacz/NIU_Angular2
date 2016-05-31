@@ -7,6 +7,10 @@ import { RouteConfig, Router } from '@angular/router-deprecated';
 import { AppState } from './app.service';
 import { Home } from './home';
 import { RouterActive } from './router-active';
+import {AuthService} from "./utility/services/auth.service";
+import {ApiService} from "./utility/services/api.service";
+import { ROUTER_DIRECTIVES, Routes, ROUTER_PROVIDERS } from '@angular/router';
+import {GalleryCreateComponent} from "./galleries/gallery_create.component";
 
 /*
  * App Component
@@ -15,7 +19,7 @@ import { RouterActive } from './router-active';
 @Component({
   selector: 'app',
   pipes: [ ],
-  providers: [ ],
+  providers: [AuthService, ApiService, ROUTER_PROVIDERS],
   directives: [ RouterActive ],
   encapsulation: ViewEncapsulation.None,
   styles: [
@@ -27,7 +31,7 @@ import { RouterActive } from './router-active';
 })
 @RouteConfig([
   { path: '/',      name: 'Index', component: Home, useAsDefault: true },
-  { path: '/home',  name: 'Home',  component: Home },
+  { path: '/create',name: 'Create', component: GalleryCreateComponent },
   { path: '/about', name: 'About', loader: () => require('es6-promise!./about')('About') }
 ])
 export class App {

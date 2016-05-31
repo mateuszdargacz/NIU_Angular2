@@ -1,0 +1,5 @@
+<ul [hidden]="!isLoggedIn">
+    <li *ngFor="#gallery of galleries">
+        <sd-gallery [gallery]="gallery"></sd-gallery>
+    </li>
+</ul>

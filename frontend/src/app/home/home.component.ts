@@ -2,8 +2,12 @@ import { Component } from '@angular/core';
 
 import { AppState } from '../app.service';
 import { NgLogin } from '../utility/components/login.component';
+import { NgRegistration } from 'app/utility/components/registration.component';
 import { Title } from './title';
 import { XLarge } from './x-large';
+import { ROUTER_DIRECTIVES, Routes, Router } from '@angular/router';
+import {GalleryListComponent} from "../galleries/gallery_list.component";
+
 
 @Component({
   // The selector is what angular internally uses
@@ -12,20 +16,24 @@ import { XLarge } from './x-large';
   selector: 'home',  // <home></home>
   // We need to tell Angular's Dependency Injection which providers are in our app.
   providers: [
-    Title
+    
+    Title,
   ],
   // We need to tell Angular's compiler which directives are in our template.
   // Doing so will allow Angular to attach our behavior to an element
   directives: [
     XLarge,
-    NgLogin
+    NgLogin,
+    GalleryListComponent,
+    NgLogin,
+    NgRegistration
   ],
   // We need to tell Angular's compiler which custom pipes are in our template.
   pipes: [ ],
   // Our list of styles in our component. We may add more to compose many styles together
   styles: [ require('./home.css') ],
   // Every Angular template is first compiled by the browser before Angular runs it's compiler
-  template: require('./home.html')
+  templateUrl: 'app/home/home.html'
 })
 export class Home {
   // Set our default values

@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { ImageService } from "../utility/services/image.service";
+import { ImagesCreateComponent} from "../galleries/images_create.component";
+import { ROUTER_DIRECTIVES, Routes, Router } from '@angular/router';
 
 /*
  * We're loading this component asynchronously
@@ -10,10 +13,12 @@ console.log('`About` component loaded asynchronously');
 
 @Component({
   selector: 'about',
+  directives: [ROUTER_DIRECTIVES, ImagesCreateComponent],
+
   styles: [`
   `],
   template: `
-    <h1>About</h1>
+    <h1>Create Image</h1>
     <div>
       For hot module reloading run
       <pre>npm run start:hmr</pre>

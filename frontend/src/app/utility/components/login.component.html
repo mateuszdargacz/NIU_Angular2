@@ -1,16 +1,26 @@
-<form (ngSubmit)="login()" [hidden]="isLoggedIn">
-    <h1>Login</h1>
-    <p>
-        {{ errors.non_field_errors }}
-    </p>
-    <p *ngIf="errors.username" class="error">
-      <span>{{ errors.username }}</span>
-    </p>
-    <input [(ngModel)]="username" placeholder="username">
-    <br>
-    <p *ngIf="errors.password" class="error">
-      <span>{{ errors.password }}</span>
-    </p>
-    <input [(ngModel)]="password" placeholder="password" type="password">
-    <button (click)="login()">Login</button>
-</form>
+    <div class="card card-container" [hidden]="isLoggedIn">
+           <h3 style="text-align: center"> Login</h3>
+
+        <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
+        <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"/>
+        <p id="profile-name" class="profile-name-card"></p>
+        <form (ngSubmit)="login()"  class="form-signin">
+            <p>
+                {{ errors.non_field_errors }}
+            </p>
+            <span id="reauth-email" *ngIf="errors.password" class="reauth-email">
+            {{ errors.password }}
+            </span>
+
+            <input [(ngModel)]="username" id="inputEmail" class="form-control" placeholder="Username" required
+                   autofocus>
+            <p *ngIf="errors.username" class="error">
+                <span>{{ errors.username }}</span>
+            </p>
+            <input type="password" id="inputPassword" [(ngModel)]="password" class="form-control" placeholder="Password"
+                   required>
+
+            <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign in</button>
+        </form><!-- /form -->
+
+    </div><!-- /card-container -->

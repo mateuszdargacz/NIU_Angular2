@@ -1,5 +1,6 @@
 var core_1 = require('@angular/core');
 var app_service_1 = require('../app.service');
+var login_component_1 = require('../utility/components/login.component');
 var title_1 = require('./title');
 var x_large_1 = require('./x-large');
 var Home = (function () {
@@ -32,7 +33,8 @@ var Home = (function () {
             // We need to tell Angular's compiler which directives are in our template.
             // Doing so will allow Angular to attach our behavior to an element
             directives: [
-                x_large_1.XLarge
+                x_large_1.XLarge,
+                login_component_1.NgLogin
             ],
             // We need to tell Angular's compiler which custom pipes are in our template.
             pipes: [],
