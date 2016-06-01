@@ -25,7 +25,7 @@ export class GalleryCreateComponent {
       null
     ).then(
       (success)=> {
-        this.router.navigate(['./home']);
+        this.router.navigateByUrl('/');
       },
       (errors) => {
         this.errors = JSON.parse(errors);

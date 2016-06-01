@@ -10,9 +10,11 @@ import {GalleryComponent} from "./gallery.component";
   templateUrl: 'app/galleries/gallery_list.component.html',
   directives: [ROUTER_DIRECTIVES, GalleryComponent],
   providers: [GalleryService],
+
 })
 export class GalleryListComponent {
   galleries:[any] = [];
+  isLoggedIn: boolean = false;
 
   constructor(private auth_service:AuthService,
               private router: Router,
@@ -21,8 +23,9 @@ export class GalleryListComponent {
   }
 
   ngOnInit() {
-      if(!this.auth_service.isLoggedIn()){
-        this.router.navigate(['/']);
+      this.isLoggedIn = this.auth_service.isLoggedIn();
+      if(!this.isLoggedIn){
+        this.router.navigateByUrl('/');
       }else{
         this.galleryService.getGalleries().subscribe(
           (galleries) => {
