@@ -32,7 +32,7 @@ export class NgRegistration {
             that.authService.setToken(data.key);
             that.isLoggedIn = true;
             that.errors = [];
-            that.router.navigate(['/about']);
+            that.router.navigateByUrl('/');
           }
         },
         err => {

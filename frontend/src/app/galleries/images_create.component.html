@@ -1,0 +1,31 @@
+
+<form>
+    <h2>Add Image</h2>
+    <p>
+        {{ errors.non_field_errors }}
+    </p>
+    <p *ngIf="errors.name" class="error">
+      <span>{{ errors.name }}</span>
+    </p>
+    <input [(ngModel)]="name" placeholder="name">
+    <br>
+    <p *ngIf="errors.desc" class="error">
+      <span>{{ errors.desc }}</span>
+    </p>
+    <input [(ngModel)]="name_or_image" placeholder="description" value="true" hidden>
+    <select [(ngModel)]="gallery" name="" id="">
+        <option value="1">Gallery 0</option>
+        <option value="2">Gallery 1</option>
+        <option value="3">Gallery 2</option>
+        <option value="4">Gallery 3</option>
+        <option value="5">Gallery 4</option>
+        <option value="6">Gallery 5</option>
+        <option value="7">Gallery 6</option>
+        <option value="8">Gallery 7</option>
+        <option value="9">Gallery 8</option>
+    </select>
+    <br>
+    <input #image placeholder="target" type="file" (change)="selectImage(image)">
+
+    <button (click)="create()">Create</button>
+</form>

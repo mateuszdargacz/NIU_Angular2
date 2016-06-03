@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 
 import {AuthService} from "../services/auth.service";
-import { ROUTER_DIRECTIVES, Routes, Router } from '@angular/router';
-
+import {Router} from '@angular/router-deprecated';
 @Component({
   selector: 'ng-login',
   templateUrl: 'app/utility/components/login.component.html',
@@ -30,7 +29,7 @@ export class NgLogin {
             that.authService.setToken(data.key);
             that.isLoggedIn = true;
             that.errors = [];
-            that.router.navigate(['/mosaic']);
+            that.router.navigateByUrl('/');
           }
         },
         err => {

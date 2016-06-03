@@ -32,6 +32,6 @@ export class LogoutComponent {
   logout(): string{
     this.isLoggedIn = false;
     this.userService.logout();
-    this.router.navigate(['/']);
+    this.router.navigateByUrl('/');
   }
 }
