@@ -10,8 +10,6 @@ django==1.9.6
 # Configuration
 django-environ==0.4.0
 
-
-
 # Forms
 django-braces==1.8.1
 django-crispy-forms==1.6.0
