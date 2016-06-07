@@ -38,14 +38,17 @@ export class App {
   angularclassLogo = 'assets/img/angularclass-avatar.png';
   loading = false;
   name = 'Ascii Art Generator';
-
+  isLoggedIn: boolean = false;
   constructor(
-    public appState: AppState) {
+    public appState: AppState,
+    public authService: AuthService
+  ) {
 
   }
 
   ngOnInit() {
-    console.log('Initial App State', this.appState.state);
+    this.isLoggedIn = this.authService.isLoggedIn();
+    console.log('AUTH : ', this.authService.isLoggedIn());
   }
 
 }
